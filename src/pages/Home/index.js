@@ -14,6 +14,8 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const {last} = useData()
+  const { data } = useData();
+
   return <>
     <header>
       <Menu />
@@ -91,8 +93,10 @@ const Page = () => {
           />
         </div>
       </section>
+      
       <div className="FormContainer" id="contact">
         <h2 className="Title">Contact</h2>
+        
         <Modal
           Content={
             <div className="ModalMessage--success">
@@ -112,17 +116,24 @@ const Page = () => {
           )}
         </Modal>
       </div>
+          
     </main>
     <footer className="row">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
-        <EventCard
-          imageSrc={last?.cover}
-          title={last?.title}
-          date={new Date(last?.date)}
-          small
-          label="boom"
-        />
+        {data?.events.map((event) => (
+          event === last ? (
+            <EventCard
+              key={event.id}
+
+              imageSrc={last?.cover}
+              title={last?.title}
+              date={new Date(last?.date)}
+              small
+              label="boom"
+            />
+          ) : null
+        ))}
       </div>
       <div className="col contact">
         <h3>Contactez-nous</h3>
