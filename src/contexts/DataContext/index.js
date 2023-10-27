@@ -25,7 +25,7 @@ export const DataProvider = ({ children }) => {
       const loadedData = await api.loadData();
       setData(loadedData);
       setLast(loadedData.events[loadedData.events.length - 1]);
-      // Définir un last pour récupérer la dernière données de api.loadData()
+      // Définition d'un state "last" pour récupérer la dernière données de api.loadData()
     } catch (err) {
       setError(err);
     }

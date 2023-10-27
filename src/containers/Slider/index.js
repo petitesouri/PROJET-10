@@ -3,8 +3,6 @@ import { useData } from "../../contexts/DataContext";
 import { getMonth } from "../../helpers/Date";
 
 import "./style.scss";
-// import EventCard from "../../components/EventCard";
-// import { format } from "prettier";
 
 const Slider = () => {
   const { data } = useData();
@@ -16,6 +14,7 @@ const Slider = () => {
   const nextCard = () => {
     setTimeout(
       () => setIndex(index + 1 < byDateDesc?.length ? index + 1 : 0),
+      // () => setIndex(index < byDateDesc.length ? index + 1 : 0),
       5000
     );
   };

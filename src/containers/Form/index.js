@@ -12,8 +12,8 @@ const Form = ({ onSuccess, onError }) => {
   const sendContact = useCallback(
     async (evt) => {
       evt.preventDefault();
-      
       setSending(true);
+      // Ajout ici de la fonction onSuccess
       onSuccess()
       // We try to call mockContactApi
       try {

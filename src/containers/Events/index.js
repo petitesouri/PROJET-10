@@ -11,6 +11,7 @@ const PER_PAGE = 9;
 
 const EventList = () => {
   const { data, error } = useData();
+  // state initial de "type" = null
   const [type, setType] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -24,20 +25,13 @@ const EventList = () => {
     }
     return false;
   });
-
-
-// changer soit le nom de la fonction ici, soit le nom du props dans Select
-// vérifier dans le test si changeType est appelé avant de changer le nom de la fonction 
+ 
   const onChange = (evtType) => {
     setCurrentPage(1);
     setType(evtType)
   } 
+  // map sur l'ensemble des évènements filtrés
   const filteredData = data?.events.filter((evt) => evt.type === type);
-  
-  // const changeType = (evtType) => {
-  //   setCurrentPage(1);
-  //   setType(evtType);
-  // };
 
   const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
   const typeList = new Set(data?.events.map((event) => event.type));
